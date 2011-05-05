@@ -1,19 +1,14 @@
 package com.arquitectura.project;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.util.StringTokenizer;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class Interfaz extends JFrame implements ActionListener  {	
-	
-	// etiquetas para la memoria principal
-	private JLabel [] memoria = new JLabel [4];
-	private JLabel[] caches = new JLabel[18];
-	private JButton[] cpus = new JButton[24];
-	
-	// metodo constructor
+public class Interfaz extends JFrame implements ActionListener  {
+
+    // metodo constructor
 	public Interfaz(){
 		super("Simulador de Memoria Cache");
 		BorderLayout simulador = new BorderLayout(8,8);
@@ -32,8 +27,9 @@ public class Interfaz extends JFrame implements ActionListener  {
 				
 		JPanel panel = new JPanel(memoriaP);
 		panel.setBackground(Color.GREEN.brighter());
-		
-		for(int i=0; i<memoria.length;i++){			
+
+        JLabel[] memoria = new JLabel[4];
+        for(int i=0; i< memoria.length;i++){
 			memoria[i] = new JLabel("Address : a " +i+ " Data: 0");
 			memoria[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			memoria[i].setBackground(Color.WHITE);
@@ -44,13 +40,13 @@ public class Interfaz extends JFrame implements ActionListener  {
 		JPanel panelAlineadoAlCentro = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		panelAlineadoAlCentro.add(panel);
 		conteSimulador.add(panelAlineadoAlCentro, BorderLayout.NORTH);
-		
-		
-		for(int i =0; i<caches.length;i++){
+
+
+        JLabel[] caches = new JLabel[18];
+        for(int i =0; i< caches.length;i++){
 			if( i % 6 == 0 ){
 				panel = new JPanel(cache);
 				conteComponentes.add(panel);
-				//panel.setBackground(Color.orange);
 			}
 			caches[i] = new JLabel(""+(i+1));
 			panel.add(caches[i]);
@@ -61,7 +57,8 @@ public class Interfaz extends JFrame implements ActionListener  {
 		}
 		
 		String lecturaEscritura = "L";
-		for(int i =0, contCpu = 0; i<cpus.length;i++){
+        JButton[] cpus = new JButton[24];
+        for(int i =0, contCpu = 0; i< cpus.length;i++){
 			if( i % 8 == 0 ){
 				panel = new JPanel(cpu);
 				conteComponentes.add(panel);
